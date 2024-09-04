@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyferCamera", "WhyferCamera.csproj", "{050BA770-C2F4-4735-881D-A5194B0ACF97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{050BA770-C2F4-4735-881D-A5194B0ACF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050BA770-C2F4-4735-881D-A5194B0ACF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050BA770-C2F4-4735-881D-A5194B0ACF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050BA770-C2F4-4735-881D-A5194B0ACF97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C82C09A1-D6DD-4CC7-A02F-62A4BB464D2C}
+	EndGlobalSection
+EndGlobal
