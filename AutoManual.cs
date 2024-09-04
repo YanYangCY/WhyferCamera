@@ -33,6 +33,7 @@ namespace WhyferCamera
                 //RectResult = data;
                 GlobalVariables.RectResult = data;
             };*/
+            //radioButtons多选框数组表
             radioButtons = new System.Windows.Forms.RadioButton[]
             {
                 A,
@@ -48,6 +49,11 @@ namespace WhyferCamera
 
         }
 
+        /// <summary>
+        /// 判断radioButtons多选框是否选中，返回Name
+        /// </summary>
+        /// <param name="radioButtons"></param>
+        /// <returns></returns>
         private string  GetSelectedRadioButton(System.Windows.Forms.RadioButton[] radioButtons)
         {
             foreach (System.Windows.Forms.RadioButton rb in radioButtons)
@@ -322,6 +328,11 @@ namespace WhyferCamera
             //ErrorDispose.getInstance().AddErrLog(Alarmcode, "");
         }
 
+        /// <summary>
+        /// 执行相机九点标定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void buttonCalinbrationStart_Click(object sender, EventArgs e)
         {
             var PointName = GetSelectedRadioButton(radioButtons);   // 判断当前点位是否选择
