@@ -532,5 +532,163 @@ namespace WhyferCamera
             }
         }
 
+        /// <summary>
+        /// 执行平台的旋转标定步骤1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationAngle1_Click(object sender, EventArgs e)
+        {
+            if (SimpleTcpClientInstance.Connected && !ACSConnect.Enabled
+                && !string.IsNullOrEmpty(textBoxAngleX.Text) && !string.IsNullOrEmpty(textBoxAngleY.Text))
+            {
+                var CenterX = Convert.ToDouble(textBoxAngleX.Text);
+                var CenterY = Convert.ToDouble(textBoxAngleY.Text);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_0,
+                    CenterX, DataManage.getInstance().SysParamData.dbXSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_1,
+                    CenterY, DataManage.getInstance().SysParamData.dbYSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2, 
+                    0, DataManage.getInstance().SysParamData.dbRSpeed);
+                buttonAngle1.ForeColor = Color.Green;              
+                Application.DoEvents(); // 允许UI更新
+                // SimpleTcpClientInstance.SendData($"Calinbration,OverPrint,{PointName},{CaliX1},{CaliY1}");
+            }
+
+        }
+        /// <summary>
+        /// 执行平台的旋转标定步骤2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationAngle2_Click(object sender, EventArgs e)
+        {
+            ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2,
+                    -2, DataManage.getInstance().SysParamData.dbRSpeed);
+            SimpleTcpClientInstance.SendData($"Calinbration,Angle,0,4");
+            while (GlobalVariables.RectResult != "OK")
+            {
+            }
+            buttonAngle2.ForeColor = Color.Green;
+            Application.DoEvents(); // 允许UI更新
+        }
+        /// <summary>
+        /// 执行平台的旋转标定步骤3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationAngle3_Click(object sender, EventArgs e)
+        {
+            ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2,
+                    2, DataManage.getInstance().SysParamData.dbRSpeed);
+            SimpleTcpClientInstance.SendData($"Calinbration,Angle,1,4");
+            while (GlobalVariables.RectResult != "OK")
+            {
+            }
+            buttonAngle3.ForeColor = Color.Green;
+            Application.DoEvents(); // 允许UI更新
+        }
+
+        /// <summary>
+        /// 执行激光原点定位标定A1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationLaser1_Click(object sender, EventArgs e)
+        {
+            if (SimpleTcpClientInstance.Connected && !ACSConnect.Enabled
+                && !string.IsNullOrEmpty(textBoxLaserX.Text) && !string.IsNullOrEmpty(textBoxLaserY.Text))
+            {
+                var CenterX = Convert.ToDouble(textBoxLaserX.Text);
+                var CenterY = Convert.ToDouble(textBoxLaserY.Text);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_0,
+                    CenterX, DataManage.getInstance().SysParamData.dbXSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_1,
+                    CenterY, DataManage.getInstance().SysParamData.dbYSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2,
+                    0, DataManage.getInstance().SysParamData.dbRSpeed);
+                SimpleTcpClientInstance.SendData($"Calinbration,Laser,A1");
+                buttonCalinbrationLaserA1.ForeColor = Color.Green;
+                CaliPointA1.ForeColor = Color.Green;                
+                Application.DoEvents(); // 允许UI更新
+            }
+
+        }
+        /// <summary>
+        /// 执行激光原点定位标定B1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationLaser2_Click(object sender, EventArgs e)
+        {
+            if (SimpleTcpClientInstance.Connected && !ACSConnect.Enabled
+                && !string.IsNullOrEmpty(textBoxLaserX.Text) && !string.IsNullOrEmpty(textBoxLaserY.Text))
+            {
+                var CenterX = Convert.ToDouble(textBoxLaserX.Text);
+                var CenterY = Convert.ToDouble(textBoxLaserY.Text);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_0,
+                    CenterX, DataManage.getInstance().SysParamData.dbXSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_1,
+                    CenterY, DataManage.getInstance().SysParamData.dbYSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2,
+                    0, DataManage.getInstance().SysParamData.dbRSpeed);
+                SimpleTcpClientInstance.SendData($"Calinbration,Laser,B1");
+                buttonCalinbrationLaserB1.ForeColor = Color.Green;
+                CaliPointB1.ForeColor = Color.Green;
+                Application.DoEvents(); // 允许UI更新
+            }
+
+        }
+        /// <summary>
+        /// 执行激光原点定位标定C1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationLaser3_Click(object sender, EventArgs e)
+        {
+            if (SimpleTcpClientInstance.Connected && !ACSConnect.Enabled
+                && !string.IsNullOrEmpty(textBoxLaserX.Text) && !string.IsNullOrEmpty(textBoxLaserY.Text))
+            {
+                var CenterX = Convert.ToDouble(textBoxLaserX.Text);
+                var CenterY = Convert.ToDouble(textBoxLaserY.Text);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_0,
+                    CenterX, DataManage.getInstance().SysParamData.dbXSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_1,
+                    CenterY, DataManage.getInstance().SysParamData.dbYSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2,
+                    0, DataManage.getInstance().SysParamData.dbRSpeed);
+                SimpleTcpClientInstance.SendData($"Calinbration,Laser,C1");
+                buttonCalinbrationLaserC1.ForeColor = Color.Green;
+                CaliPointC1.ForeColor = Color.Green;
+                Application.DoEvents(); // 允许UI更新
+            }
+
+        }
+        /// <summary>
+        /// 执行激光原点定位标定D1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void buttonCalinbrationLaser4_Click(object sender, EventArgs e)
+        {
+            if (SimpleTcpClientInstance.Connected && !ACSConnect.Enabled
+                && !string.IsNullOrEmpty(textBoxLaserX.Text) && !string.IsNullOrEmpty(textBoxLaserY.Text))
+            {
+                var CenterX = Convert.ToDouble(textBoxLaserX.Text);
+                var CenterY = Convert.ToDouble(textBoxLaserY.Text);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_0,
+                    CenterX, DataManage.getInstance().SysParamData.dbXSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_1,
+                    CenterY, DataManage.getInstance().SysParamData.dbYSpeed);
+                ACSHandle.getInstance().fToPoint(0, ACS.SPiiPlusNET.Axis.ACSC_AXIS_2,
+                    0, DataManage.getInstance().SysParamData.dbRSpeed);
+                SimpleTcpClientInstance.SendData($"Calinbration,Laser,D1");
+                buttonCalinbrationLaserD1.ForeColor = Color.Green;
+                CaliPointD1.ForeColor = Color.Green;
+                Application.DoEvents(); // 允许UI更新
+            }
+
+        }
+
     }
 }
